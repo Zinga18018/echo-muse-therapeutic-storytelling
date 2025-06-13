@@ -2,7 +2,7 @@
 
 *Personalized healing through the power of AI-generated stories and ambient soundscapes*
 
-![Echo-Muse Main Interface](sc/{5BCD52CE-60F3-430D-87A5-EEA95B171106}.png)
+![Echo-Muse Main Interface]({5BCD52CE-60F3-430D-87A5-EEA95B171106}.png)
 
 ## 🌟 Overview
 
