@@ -104,8 +104,16 @@ The immersive story experience includes:
    ```
 
 3. **Configure API Key**:
-   - Obtain a Google Gemini API key
-   - Update the `API_KEY` variable in `app.py`
+   - Get your Google Gemini API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
+   - Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+   - Edit `.env` and add your actual API key:
+   ```
+   GEMINI_API_KEY=your_actual_api_key_here
+   SECRET_KEY=your_secret_key_here
+   ```
 
 4. **Run the application**:
    ```bash
