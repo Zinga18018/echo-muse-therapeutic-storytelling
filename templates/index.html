@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo-Muse: AI-Powered Therapeutic Storytelling</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>🎭 Echo-Muse</h1>
+                <p class="tagline">AI-Powered Therapeutic Storytelling Companion</p>
+            </div>
+            <nav class="nav">
+                <a href="#" class="nav-link active" onclick="showSection('home')">Home</a>
+                <a href="#" class="nav-link" onclick="showSection('progress')">Progress</a>
+                <a href="#" class="nav-link" onclick="showSection('about')">About</a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Home Section -->
+            <section id="home" class="section active">
+                <div class="welcome-card">
+                    <h2>Welcome to Your Healing Journey</h2>
+                    <p>Share what's on your heart, and I'll create a personalized therapeutic story just for you, accompanied by soothing ambient sounds to guide you toward peace and healing.</p>
+                </div>
+
+                <!-- User Input Form -->
+                <div class="input-section">
+                    <div class="form-group">
+                        <label for="user-name">What would you like me to call you?</label>
+                        <input type="text" id="user-name" placeholder="Your name or nickname" value="friend">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mood-before">How are you feeling right now? (1-10)</label>
+                        <div class="mood-slider">
+                            <input type="range" id="mood-before" min="1" max="10" value="5">
+                            <div class="mood-labels">
+                                <span>😔 Struggling</span>
+                                <span>😐 Neutral</span>
+                                <span>😊 Great</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user-input">Share what's on your mind...</label>
+                        <textarea id="user-input" placeholder="Tell me about what you're experiencing, feeling, or struggling with. There's no judgment here - just a safe space for your thoughts and emotions." rows="6"></textarea>
+                    </div>
+
+                    <button id="generate-btn" class="generate-btn" onclick="generateStory()">
+                        <span class="btn-text">Create My Healing Story</span>
+                        <span class="btn-loading" style="display: none;">✨ Crafting your story...</span>
+                    </button>
+                </div>
+
+                <!-- Story Display -->
+                <div id="story-section" class="story-section" style="display: none;">
+                    <div class="story-header">
+                        <h3>Your Personal Healing Story</h3>
+                        <div class="story-controls">
+                            <button id="play-audio" class="audio-btn" onclick="toggleAudio()">
+                                🎵 Play Ambient Sounds
+                            </button>
+                            <button class="share-btn" onclick="shareStory()">
+                                💝 Save Story
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="story-content" class="story-content"></div>
+                    
+                    <div class="story-footer">
+                        <div class="mood-after">
+                            <label for="mood-after">How do you feel after reading your story? (1-10)</label>
+                            <div class="mood-slider">
+                                <input type="range" id="mood-after" min="1" max="10" value="5">
+                                <div class="mood-labels">
+                                    <span>😔 Same</span>
+                                    <span>😌 Better</span>
+                                    <span>😊 Much Better</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="new-story-btn" onclick="resetForm()">Create Another Story</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section id="progress" class="section">
+                <div class="progress-header">
+                    <h2>Your Healing Journey</h2>
+                    <p>Track your emotional wellness over time</p>
+                </div>
+                
+                <div class="progress-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3 id="total-sessions">0</h3>
+                            <p>Stories Created</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="avg-improvement">+0</h3>
+                            <p>Average Mood Improvement</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="current-streak">0</h3>
+                            <p>Day Streak</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <canvas id="mood-chart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="section">
+                <div class="about-content">
+                    <h2>About Echo-Muse</h2>
+                    <div class="about-grid">
+                        <div class="about-card">
+                            <h3>🎭 Therapeutic Storytelling</h3>
+                            <p>Combines the healing power of narrative therapy with AI-generated personalized stories that speak directly to your emotional needs.</p>
+                        </div>
+                        <div class="about-card">
+                            <h3>🎵 Ambient Soundscapes</h3>
+                            <p>Each story comes with carefully selected ambient sounds that enhance the therapeutic experience and promote relaxation.</p>
+                        </div>
+                        <div class="about-card">
+                            <h3>🧠 AI-Powered Analysis</h3>
+                            <p>Advanced emotional analysis helps create stories that incorporate proven therapeutic techniques tailored to your specific situation.</p>
+                        </div>
+                        <div class="about-card">
+                            <h3>📈 Progress Tracking</h3>
+                            <p>Monitor your emotional wellness journey over time with mood tracking and insights into your healing progress.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="disclaimer">
+                        <h4>Important Note</h4>
+                        <p>Echo-Muse is designed as a complementary wellness tool and is not a replacement for professional mental health treatment. If you're experiencing severe emotional distress, please consult with a qualified mental health professional.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Echo-Muse. Created with 💜 for healing and hope.</p>
+        </footer>
+    </div>
+
+    <!-- Audio Element for Ambient Sounds -->
+    <audio id="ambient-audio" loop>
+        <source src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Progress - Echo-Muse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <h1>🎭 Echo-Muse</h1>
+                <p class="tagline">Your Healing Journey Progress</p>
+            </div>
+            <nav class="nav">
+                <a href="{{ url_for('index') }}" class="nav-link">← Back to Home</a>
+            </nav>
+        </header>
+
+        <main class="main">
+            <div class="progress-dashboard">
+                <h2>Your Healing Journey</h2>
+                
+                {% if sessions %}
+                    <div class="progress-summary">
+                        <div class="summary-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">{{ sessions|length }}</span>
+                                <span class="stat-label">Total Sessions</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">
+                                    {% set improvements = [] %}
+                                    {% for session in sessions %}
+                                        {% if session[2] and session[1] %}
+                                            {% set _ = improvements.append(session[2] - session[1]) %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if improvements %}
+                                        +{{ "%.1f"|format(improvements|sum / improvements|length) }}
+                                    {% else %}
+                                        N/A
+                                    {% endif %}
+                                </span>
+                                <span class="stat-label">Avg Mood Improvement</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sessions-timeline">
+                        <h3>Recent Sessions</h3>
+                        <div class="timeline">
+                            {% for session in sessions %}
+                                <div class="timeline-item">
+                                    <div class="timeline-date">
+                                        {{ session[0][:10] }}
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="mood-change">
+                                            {% if session[1] and session[2] %}
+                                                <span class="mood-before">Before: {{ session[1] }}/10</span>
+                                                <span class="mood-arrow">→</span>
+                                                <span class="mood-after">After: {{ session[2] }}/10</span>
+                                                <span class="mood-improvement 
+                                                    {% if session[2] > session[1] %}positive
+                                                    {% elif session[2] < session[1] %}negative
+                                                    {% else %}neutral{% endif %}">
+                                                    {% if session[2] > session[1] %}+{% endif %}{{ session[2] - session[1] }}
+                                                </span>
+                                            {% else %}
+                                                <span class="mood-incomplete">Session in progress</span>
+                                            {% endif %}
+                                        </div>
+                                        {% if session[3] %}
+                                            {% set emotional_data = session[3]|from_json %}
+                                            {% if emotional_data %}
+                                                <div class="emotional-themes">
+                                                    <strong>Focus:</strong> {{ emotional_data.primary_emotion|title }}
+                                                    {% if emotional_data.key_themes %}
+                                                        <br><small>Themes: {{ emotional_data.key_themes|join(', ') }}</small>
+                                                    {% endif %}
+                                                </div>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="insights-section">
+                        <h3>Insights & Patterns</h3>
+                        <div class="insights-grid">
+                            <div class="insight-card">
+                                <h4>Most Common Focus Areas</h4>
+                                <div class="focus-areas">
+                                    {% set emotion_counts = {} %}
+                                    {% for session in sessions %}
+                                        {% if session[3] %}
+                                            {% set emotional_data = session[3]|from_json %}
+                                            {% if emotional_data and emotional_data.primary_emotion %}
+                                                {% set emotion = emotional_data.primary_emotion %}
+                                                {% set _ = emotion_counts.update({emotion: emotion_counts.get(emotion, 0) + 1}) %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% for emotion, count in emotion_counts.items() %}
+                                        <span class="emotion-tag">{{ emotion|title }} ({{ count }})</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            
+                            <div class="insight-card">
+                                <h4>Progress Trend</h4>
+                                <div class="trend-indicator">
+                                    {% set recent_improvements = [] %}
+                                    {% for session in sessions[:5] %}
+                                        {% if session[2] and session[1] %}
+                                            {% set _ = recent_improvements.append(session[2] - session[1]) %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if recent_improvements %}
+                                        {% set avg_recent = recent_improvements|sum / recent_improvements|length %}
+                                        {% if avg_recent > 0.5 %}
+                                            <span class="trend positive">📈 Improving</span>
+                                            <p>Your recent sessions show positive mood improvements!</p>
+                                        {% elif avg_recent < -0.5 %}
+                                            <span class="trend negative">📉 Challenging Period</span>
+                                            <p>Consider reaching out to a professional for additional support.</p>
+                                        {% else %}
+                                            <span class="trend stable">📊 Stable</span>
+                                            <p>Your mood has been relatively stable across sessions.</p>
+                                        {% endif %}
+                                    {% else %}
+                                        <span class="trend neutral">📋 Building Data</span>
+                                        <p>Complete more sessions to see your progress trends.</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="empty-state">
+                        <div class="empty-icon">📖</div>
+                        <h3>Your Journey Begins Here</h3>
+                        <p>You haven't created any therapeutic stories yet. Start your healing journey by sharing what's on your mind.</p>
+                        <a href="{{ url_for('index') }}" class="cta-button">Create Your First Story</a>
+                    </div>
+                {% endif %}
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Echo-Muse. Created with 💜 for healing and hope.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add a simple filter to parse JSON in templates
+        function parseJSON(jsonString) {
+            try {
+                return JSON.parse(jsonString);
+            } catch (e) {
+                return null;
+            }
+        }
+    </script>
+</body>
+</html>
