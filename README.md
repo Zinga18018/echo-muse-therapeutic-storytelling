@@ -2,7 +2,7 @@
 
 *Personalized healing through the power of AI-generated stories and ambient soundscapes*
 
-![Echo-Muse Main Interface]({5BCD52CE-60F3-430D-87A5-EEA95B171106}.png)
+![Echo-Muse Main Interface]({Sc/5BCD52CE-60F3-430D-87A5-EEA95B171106}.png)
 
 ## 🌟 Overview
 
@@ -43,7 +43,7 @@ Echo-Muse is an innovative therapeutic storytelling application that combines th
 ## 🖥️ User Interface
 
 ### Welcome & Input Interface
-![User Input Interface](sc/{AE1F577F-85A4-4663-8F7D-71C9AF314774}.png)
+![User Input Interface](Sc/{AE1F577F-85A4-4663-8F7D-71C9AF314774}.png)
 
 The clean, intuitive interface features:
 - **Personalized Greeting**: Customizable name input for a personal touch
@@ -52,7 +52,7 @@ The clean, intuitive interface features:
 - **Story Generation Button**: One-click access to personalized therapeutic content
 
 ### Story Experience & Audio Controls
-![Story Display and Audio Controls](sc/{E33260B6-0E49-4936-A88A-3677A150E848}.png)
+![Story Display and Audio Controls](Sc/{E33260B6-0E49-4936-A88A-3677A150E848}.png)
 
 The immersive story experience includes:
 - **Beautiful Story Display**: Optimized typography for comfortable reading
@@ -144,7 +144,7 @@ echo-muse/
 └── README.md            # This documentation
 ```
 
-## 🎯 Therapeutic Approach
+##  Therapeutic Approach
 
 Echo-Muse employs evidence-based therapeutic techniques:
 
@@ -154,7 +154,7 @@ Echo-Muse employs evidence-based therapeutic techniques:
 - **Bibliotherapy**: Uses therapeutic reading as a healing modality
 - **Sound Therapy**: Leverages specific frequencies known to promote relaxation and healing
 
-## 🌈 Use Cases
+##  Use Cases
 
 - **Daily Stress Relief**: Quick therapeutic stories for everyday challenges
 - **Anxiety Management**: Grounding narratives with calming soundscapes
@@ -163,7 +163,7 @@ Echo-Muse employs evidence-based therapeutic techniques:
 - **Mindfulness Practice**: Combining storytelling with meditative audio experiences
 - **Creative Inspiration**: Unique stories that spark imagination and hope
 
-## 💫 How to Use Echo-Muse
+##  How to Use Echo-Muse
 
 ### Getting Started
 
@@ -181,14 +181,14 @@ Echo-Muse employs evidence-based therapeutic techniques:
 - **Story Sharing**: Share inspiring narratives with others (anonymously)
 - **Progress Tracking**: View your emotional journey over time in the Progress section
 
-## 🔒 Privacy & Safety
+## Privacy & Safety
 
 - **Local Data Storage**: All personal information stays on your device
 - **No Personal Data Transmission**: Stories are generated without storing personal details
 - **Session Anonymization**: User sessions are stored with anonymous identifiers
 - **Therapeutic Disclaimer**: This tool is designed for wellness support, not as a replacement for professional mental health care
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 - **Voice Narration**: AI-generated voice reading of stories
 - **Binaural Beats**: Advanced audio therapy integration
@@ -198,7 +198,7 @@ Echo-Muse employs evidence-based therapeutic techniques:
 - **Mobile App**: Native iOS and Android applications
 - **Multi-language Support**: Therapeutic stories in multiple languages
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions to make Echo-Muse even more effective as a therapeutic tool. Please consider:
 
@@ -212,7 +212,7 @@ We welcome contributions to make Echo-Muse even more effective as a therapeutic 
 
 This project is created for therapeutic and educational purposes. Please ensure any use aligns with ethical guidelines for mental health applications.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **Google Gemini AI**: For powerful natural language generation
 - **Web Audio API**: For enabling real-time audio synthesis
@@ -225,7 +225,7 @@ This project is created for therapeutic and educational purposes. Please ensure 
 
 **Echo-Muse** - Where technology meets therapy, and stories become medicine. 🎭✨
 
-## ⚠️ Important Disclaimer
+##  Important Disclaimer
 
 **Echo-Muse is a complementary tool for emotional well-being and is not a substitute for professional mental health care.** If you're experiencing severe depression, anxiety, or other mental health concerns, please consult with a qualified mental health professional.
 
@@ -236,23 +236,13 @@ This project is created for therapeutic and educational purposes. Please ensure 
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **Google Gemini AI** for providing the language model that powers our storytelling
 - **The therapeutic community** for decades of research into healing through narrative
 - **Open source contributors** who make projects like this possible
 - **Beta testers** who helped refine the user experience
 
-## 📞 Support
 
-Need help or have questions?
-
-- **Documentation**: Check our [Wiki](https://github.com/your-username/echo-muse/wiki)
-- **Issues**: Report bugs or request features in our [Issue Tracker](https://github.com/your-username/echo-muse/issues)
-- **Discussions**: Join conversations in our [Discussions](https://github.com/your-username/echo-muse/discussions)
-
----
-
-*"In every story, there is a seed of healing. In every narrative, a path to wholeness."*
 
 **Created with 💜 for healing and hope.**
